@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>RTCPeerConnection 예제: DataChannel과 동영상 전송</title>
+  <style>
+    video {
+      width: 320px;
+      height: 240px;
+      background: #000;
+      margin: 5px;
+    }
+    #log p {
+      margin: 0;
+      padding: 2px;
+      font-size: 0.9em;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+<h2>Local Video</h2>
+<video id="localVideo" autoplay muted playsinline></video>
+<h2>Remote Video</h2>
+<video id="remoteVideo" autoplay playsinline></video>
+<br>
+<button id="sendButton">DataChannel 메시지 전송</button>
+<h3>로그</h3>
+<div id="log"></div>
+
+<script>
+  // HTML 요소들 참조
+  const localVideo = document.getElementById('localVideo');
+  const remoteVideo = document.getElementById('remoteVideo');
+  const sendButton = document.getElementById('sendButton');
+  const logDiv = document.getElementById('log');
+
+  // 전역 변수
+  let localStream;
+  let pc1, pc2;
+  let dataChannel; // pc1에서 생성한 DataChannel
+
+  // STUN 서버를 사용하는 간단한 ICE 서버 구성
+  const configuration = {
+    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+  };
+
+  // 로그 출력 함수
+  function log(message) {
+    const p = document.createElement('p');
+    p.textContent = message;
+    logDiv.appendChild(p);
+  }
+
+  // 1. getUserMedia를 통해 로컬 video 스트림 가져오기
+  navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+          .then(stream => {
+            localStream = stream;
+            localVideo.srcObject = stream;
+            log('로컬 스트림 획득');
+
+            // 피어 연결 설정 시작
+            setupPeerConnections();
+          })
+          .catch(error => {
+            console.error('getUserMedia 에러:', error);
+            log('getUserMedia 에러: ' + error);
+          });
+
+  // 2. 두 피어 연결(pc1, pc2) 생성 및 설정
+  function setupPeerConnections() {
+    // 두 피어 연결 생성
+    pc1 = new RTCPeerConnection(configuration);
+    pc2 = new RTCPeerConnection(configuration);
+
+    // pc1에 로컬 스트림의 트랙들을 추가 (동영상 전송)
+    localStream.getTracks().forEach(track => {
+      pc1.addTrack(track, localStream);
+    });
+
+    // pc1에서 DataChannel 생성 (예제에서는 'chat' 채널)
+    dataChannel = pc1.createDataChannel('chat');
+    dataChannel.onopen = () => {
+      log('pc1 DataChannel 열림');
+    };
+    dataChannel.onmessage = event => {
+      log('pc1 수신 메시지: ' + event.data);
+    };
+
+    // pc2는 ondatachannel 이벤트를 통해 DataChannel 수신
+    pc2.ondatachannel = event => {
+      const receiveChannel = event.channel;
+      receiveChannel.onopen = () => {
+        log('pc2 DataChannel 열림');
+      };
+      receiveChannel.onmessage = event => {
+        log('pc2 수신 메시지: ' + event.data);
+      };
+
+      // 필요 시 전역 변수에 할당하여 이후 메시지 전송에 사용 가능
+      window.receiveChannel = receiveChannel;
+    };
+
+    // ICE 후보 정보 교환
+    pc1.onicecandidate = event => {
+      if (event.candidate) {
+        pc2.addIceCandidate(event.candidate)
+                .catch(e => console.error('pc2 ICE 후보 추가 에러:', e));
+      }
+    };
+    pc2.onicecandidate = event => {
+      if (event.candidate) {
+        pc1.addIceCandidate(event.candidate)
+                .catch(e => console.error('pc1 ICE 후보 추가 에러:', e));
+      }
+    };
+
+    // pc2가 원격 스트림을 받으면 remoteVideo에 연결
+    pc2.ontrack = event => {
+      // event.streams는 array로 전달되며, 첫 번째 스트림을 사용
+      if (remoteVideo.srcObject !== event.streams[0]) {
+        remoteVideo.srcObject = event.streams[0];
+        log('pc2에서 원격 스트림 수신');
+      }
+    };
+
+    // SDP(세션 설명 프로토콜)를 통한 offer/answer 교환 시작
+    pc1.createOffer()
+            .then(offer => {
+              return pc1.setLocalDescription(offer);
+            })
+            .then(() => {
+              // pc1의 offer를 pc2의 remoteDescription으로 설정
+              return pc2.setRemoteDescription(pc1.localDescription);
+            })
+            .then(() => {
+              return pc2.createAnswer();
+            })
+            .then(answer => {
+              return pc2.setLocalDescription(answer);
+            })
+            .then(() => {
+              // pc2의 answer를 pc1의 remoteDescription으로 설정
+              return pc1.setRemoteDescription(pc2.localDescription);
+            })
+            .then(() => {
+              log('SDP 교환 완료');
+            })
+            .catch(error => {
+              console.error('SDP 교환 에러:', error);
+              log('SDP 교환 에러: ' + error);
+            });
+  }
+
+  // 3. 버튼 클릭 시 DataChannel로 메시지 전송
+  sendButton.addEventListener('click', () => {
+    // pc1의 DataChannel 상태 확인 후 메시지 전송
+    if (dataChannel && dataChannel.readyState === 'open') {
+      const msg = '안녕하세요, pc1에서 보낸 메시지!';
+      dataChannel.send(msg);
+      log('pc1에서 메시지 전송: ' + msg);
+    } else if (window.receiveChannel && window.receiveChannel.readyState === 'open') {
+      // 예시로 pc2의 채널로 전송할 수도 있음
+      const msg = '안녕하세요, pc2에서 보낸 메시지!';
+      window.receiveChannel.send(msg);
+      log('pc2에서 메시지 전송: ' + msg);
+    } else {
+      log('DataChannel이 아직 열리지 않았습니다.');
+    }
+  });
+</script>
+</body>
+</html>
