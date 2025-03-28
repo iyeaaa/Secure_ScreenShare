@@ -1,9 +1,10 @@
 # Privacy WebRTC Service
 프라이버시 보호 WebRTC 기반 실시간 지원 서비스
 
-## Developer
+## Developers
 
 202202624 이예인
+202002569 최동현
 
 ## Works
 
