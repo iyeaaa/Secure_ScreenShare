@@ -3,3 +3,5 @@
 Link : https://youtu.be/z570EzBaHbY
 ## week2
 Link : https://youtu.be/bX-g0Ycl_NE
+## week3
+Link : https://youtu.be/tU0xAXcUeFE
