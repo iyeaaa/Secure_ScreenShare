@@ -2,6 +2,7 @@
   "name": "zoom",
   "version": "1.0.0",
   "license": "ISC",
+  "type": "module",
   "description": "Zoom Clone using WebRTC and Websockets",
   "scripts": {
     "dev": "nodemon"

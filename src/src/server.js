@@ -1,4 +1,5 @@
 import http from "http";
+import { fileURLToPath } from 'url';
 import { Server } from "socket.io";
 import { instrument } from "@socket.io/admin-ui";
 import express from "express";
@@ -6,6 +7,9 @@ import session from "express-session";
 import path from "path";
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /* Session 설정 */
 const sessionMiddleware = session({
