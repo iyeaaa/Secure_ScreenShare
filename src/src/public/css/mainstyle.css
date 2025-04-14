@@ -16,27 +16,15 @@ body {
 
 /* 헤더 영역 */
 .main-header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+    text-align: center;
     padding: 20px;
     background-color: #4A90E2;
     color: white;
     width: 100%;
-    text-align: center;
 }
 
 .main-header h1 {
-    grid-column: 1 / -1;
-    /* h1은 전체 너비 차지 */
     font-size: 2em;
-    margin-bottom: 5px;
-}
-
-.main-header p {
-    grid-column: 2;
-    /* 가운데 칸 */
-    font-size: 1em;
 }
 
 /* 채팅 리스트 컨테이너 */
@@ -78,10 +66,8 @@ body {
 
 /* "원격 제어하기" 버튼 */
 .remote-control-btn {
-    margin-left: auto;
-    /* 나란히 있을 때 오른쪽으로 밀어내기 */
-    margin-right: 10px;
-    /* 두 버튼 사이 간격 부여 */
+    margin-left: auto;             /* 나란히 있을 때 오른쪽으로 밀어내기 */
+    margin-right: 10px;           /* 두 버튼 사이 간격 부여 */
     padding: 10px 15px;
     background-color: #4A90E2;
     color: white;
@@ -122,17 +108,4 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px auto;
-}
-
-.main-header #logout {
-    grid-column: 3;
-    justify-self: end;
-    color: #4A90E2;
-    background-color: white;
-    height: 40px;
-    width: 80px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
 }
