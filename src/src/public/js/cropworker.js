@@ -3,54 +3,36 @@ importScripts('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js
 
 
 async function transform(frame, controller) {
-    // Crop 설정 및 캔버스 처리 생략 (기존 코드 유지)
+    // 1. 캔버스 준비 (이전과 동일)
     const bitmap = await createImageBitmap(frame);
     const canvas = new OffscreenCanvas(frame.displayWidth, frame.displayHeight);
     const ctx = canvas.getContext('2d');
     ctx.drawImage(bitmap, 0, 0);
 
-    // OCR 실행
+    // 2. OCR 실행 (이전과 동일)
     const { data: { words } } = await Tesseract.recognize(canvas, 'eng');
 
-    // "Hello"만 블러 처리
+    // 3. "Hello" 단어 찾아 검은색 사각형으로 덮기 ✨ 여기가 바뀌었어요! ✨
     for (const word of words) {
-        if (word.text !== "Hello") continue;  // ✅ 이 조건 추가
+        if (word.text !== "Hello") continue; // "Hello"가 아니면 건너뛰기
 
+        // "Hello" 단어의 경계 상자(bounding box) 정보 가져오기
         const { x0, y0, x1, y1 } = word.bbox;
-        const w = Math.max(x1 - x0, 1);
-        const h = Math.max(y1 - y0, 1);
-        const region = ctx.getImageData(x0, y0, w, h);
-        const size = 5;
+        const w = x1 - x0; // 사각형의 너비 계산
+        const h = y1 - y0; // 사각형의 높이 계산
 
-        for (let yy = 0; yy < h; yy += size) {
-            for (let xx = 0; xx < w; xx += size) {
-                const i = (yy * w + xx) * 4;
-                const r = region.data[i];
-                const g = region.data[i + 1];
-                const b = region.data[i + 2];
-
-                for (let dy = 0; dy < size; dy++) {
-                    for (let dx = 0; dx < size; dx++) {
-                        const xi = ((yy + dy) * w + (xx + dx)) * 4;
-                        if (xi < region.data.length - 4) {
-                            region.data[xi] = r;
-                            region.data[xi + 1] = g;
-                            region.data[xi + 2] = b;
-                        }
-                    }
-                }
-            }
-        }
-
-        ctx.putImageData(region, x0, y0);
+        // === 블러 처리 코드 대신 아래 코드로 변경 ===
+        // 그리기 색상을 검은색으로 설정
+        ctx.fillStyle = 'black';
+        // 해당 위치에 채워진 사각형 그리기
+        ctx.fillRect(x0, y0, w, h);
+        // ========================================
     }
 
-    const newFrame = new VideoFrame(canvas, {
-        timestamp: frame.timestamp
-    });
-
+    // 4. 변환된 프레임 출력 (이전과 동일)
+    const newFrame = new VideoFrame(canvas, { timestamp: frame.timestamp });
     controller.enqueue(newFrame);
-    frame.close();
+    frame.close(); // 원본 프레임 리소스 해제
 }
 
 
