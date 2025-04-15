@@ -116,6 +116,7 @@ async function getScreen() {
             systemAudio: "include",
             surfaceSwitching: "include",
             monitorTypeSurfaces: "include",
+            frameRate: { max: 10 }
         });
         startShareButton.disabled = true;
         stopShareButton.disabled = false;
