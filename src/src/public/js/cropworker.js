@@ -3,7 +3,7 @@ importScripts('https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js
 
 
 async function transform(frame, controller) {
-    // 1. 캔버스 준비 (이전과 동일)
+    // 1. 캔버스 준비
     const bitmap = await createImageBitmap(frame);
     const canvas = new OffscreenCanvas(frame.displayWidth, frame.displayHeight);
     const ctx = canvas.getContext('2d');
@@ -12,7 +12,7 @@ async function transform(frame, controller) {
     // 2. OCR 실행 (이전과 동일)
     const { data: { words } } = await Tesseract.recognize(canvas, 'eng');
 
-    // 3. "Hello" 단어 찾아 검은색 사각형으로 덮기 ✨ 여기가 바뀌었어요! ✨
+    // 3. "Hello" 단어 찾아 검은색 사각형으로 덮기 ✨
     for (const word of words) {
         if (word.text !== "Hello") continue; // "Hello"가 아니면 건너뛰기
 
