@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="230b2b19-4002-4d18-af2a-a29e2043888a" name="Changes" comment="last update">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-발표자료.key" beforeDir="false" afterPath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-발표자료.key" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-유스케이스명세서.docx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-유스케이스명세서.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-유스케이스명세서.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/week5/12조-5주차-프라이버시 보호 실시간 지원 서비스-유스케이스명세서.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,21 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "week5에 #7개",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/iyein/Documents/PrivRTC",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;week5&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/iyein/Documents/PrivRTC&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="PrivRTC" />
@@ -134,6 +137,9 @@
       <workItem from="1743837557675" duration="746000" />
       <workItem from="1744866808986" duration="6000" />
       <workItem from="1744866828494" duration="11000" />
+      <workItem from="1744912864416" duration="7000" />
+      <workItem from="1744912902669" duration="2000" />
+      <workItem from="1744914468368" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="last update">
       <option name="closed" value="true" />
