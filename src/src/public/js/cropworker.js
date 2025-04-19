@@ -6,8 +6,36 @@ function transform(frame, controller) {
     const right = frame.displayWidth * (rr / 100);
     const bottom = frame.displayHeight * (rb / 100);
 
+<<<<<<< Updated upstream
     function alignTo(value, alignment) {
         return value - (value % alignment);
+=======
+async function transform(frame, controller) {
+    // 1. 캔버스 준비
+    const bitmap = await createImageBitmap(frame);
+    const canvas = new OffscreenCanvas(frame.displayWidth, frame.displayHeight);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(bitmap, 0, 0);
+
+    // 2. OCR 실행 (이전과 동일)
+    const { data: { words } } = await Tesseract.recognize(canvas, 'eng');
+
+    // 3. "Hello" 단어 찾아 검은색 사각형으로 덮기 ✨
+    for (const word of words) {
+        if (word.text !== "YIYEIN") continue; // "Hello"가 아니면 건너뛰기
+
+        // "Hello" 단어의 경계 상자(bounding box) 정보 가져오기
+        const { x0, y0, x1, y1 } = word.bbox;
+        const w = x1 - x0; // 사각형의 너비 계산
+        const h = y1 - y0; // 사각형의 높이 계산
+
+        // === 블러 처리 코드 대신 아래 코드로 변경 ===
+        // 그리기 색상을 검은색으로 설정
+        ctx.fillStyle = 'black';
+        // 해당 위치에 채워진 사각형 그리기
+        ctx.fillRect(x0, y0, w, h);
+        // ========================================
+>>>>>>> Stashed changes
     }
 
     const alignedLeft = alignTo(Math.round(left), 2);
