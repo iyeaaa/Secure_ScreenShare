@@ -12,13 +12,17 @@ function transform(frame, controller) {
 
     const alignedLeft = alignTo(Math.round(left), 2);
     const alignedTop = alignTo(Math.round(top), 2);
+    const alignedWidth = alignTo(Math.round(frame.displayWidth - (left + right)), 2)
+    const alignedHeight = alignTo(Math.round(frame.displayHeight - (top + bottom)), 2)
+
+    console.log(alignedLeft)
 
     const newFrame = new VideoFrame(frame, {
         visibleRect: {
             x: alignedLeft,
-            width: Math.round(frame.displayWidth - (left + right)),
+            width: alignedWidth,
             y: alignedTop,
-            height: Math.round(frame.displayHeight - (top + bottom)),
+            height: alignedHeight,
         }
     });
 
