@@ -1,0 +1,27 @@
+title 민감 정보 자동 마스킹
+
+    participant User
+    participant WebWorker
+    participant AI Model
+    participant Helper
+
+
+    User->>User: 마스킹 토글 버튼 클릭
+
+    User->>User: MediaStreamTrackProcessor/Generator 생성
+    User->>WebWorker: 'Masking' 메시지 전송 (readable, writable 스트림 전달)
+
+    WebWorker->>WebWorker: readable 스트림에서 프레임 읽기
+    WebWorker->>WebWorker: transform() 함수 실행 
+    WebWorker->>AI Model: 프레임의 민감 정보 실시간 탐지 요청
+    AI Model->>WebWorker: 민감정보 위치정보 제공
+
+
+    WebWorker->>WebWorker: 마스킹 처리 후 처리된 프레임을 writable 스트림에 쓰기
+    
+    User->>User: Generator 트랙에서 변환된 스트림 생성
+
+    User->>User: PeerConnection의 비디오 트랙 교체
+
+    Helper->>Helper: PeerConnection의 기존 스트림 업데이트
+    Helper->>Helper: Helper 화면에 잘린 User 화면 표시
