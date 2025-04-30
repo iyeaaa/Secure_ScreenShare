@@ -66,17 +66,17 @@ function createChatRoom(profilePicSrc, username, room) {
     const lastMessageElement = document.createElement('p');
     lastMessageElement.textContent = `마지막 연결 : 2024.12.24`;
 
-    // 원격 제어(하는 쪽) 버튼
+    // 도움 주기 버튼
     const remoteControlBtn = document.createElement('button');
     remoteControlBtn.classList.add('remote-control-btn');
-    remoteControlBtn.textContent = '원격 제어하기';
+    remoteControlBtn.textContent = '도움 주기';
     remoteControlBtn.addEventListener('click', () => controllButtonEvent(room));
 
 
     // 원격 제어(받는 쪽) 버튼
     const remoteControlledBtn = document.createElement('button');
     remoteControlledBtn.classList.add('remote-controlled-btn');
-    remoteControlledBtn.textContent = '원격 제어 받기';
+    remoteControlledBtn.textContent = '도움 받기';
     remoteControlledBtn.addEventListener('click', () => receiveButtonEvent(room))
 
     // chat-info div에 사용자 이름과 메시지 추가
