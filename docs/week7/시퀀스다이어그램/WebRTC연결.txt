@@ -1,22 +1,31 @@
-title 화면 영역 세밀 지정
 
-    participant User
-    participant WebWorker
+    title WebRTC 연결
+
     participant Helper
+    participant Signaling Server
+    participant User
 
-    User->>User: "영역 선택" 버튼 클릭
+    Helper->>Helper: "도움주기" 버튼 클릭 후 제어 페이지로 이동
+    Helper->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
+    Signaling Server->>Signaling Server: Helper를 해당 room에 넣음
+    Helper->>Helper: getMedia() 호출 (카메라/마이크 접근)
+    Helper->>Helper: makeConnection() 호출 (RTCPeerConnection 생성)
 
-    User->>User: 슬라이더 조작 (top, bottom, left, right 값 변경)
-    User->>User: applySliderValues() -> croppingScreen(t, b, l, r) 호출
-    User->>User: MediaStreamTrackProcessor/Generator 생성
-    User->>WebWorker: 'crop' 메시지 전송 (readable, writable 스트림 및 crop 값 전달)
-    WebWorker->>WebWorker: onmessage 이벤트 수신
-    WebWorker->>WebWorker: readable 스트림에서 프레임 읽기
-    WebWorker->>WebWorker: transform() 함수 실행 (crop 값 적용하여 프레임 자르기)
-    WebWorker->>WebWorker: 잘린 프레임(newFrame)을 writable 스트림에 쓰기
-    User->>User: Generator 트랙에서 변환된 스트림 생성
-    User->>User: screenVideo.srcObject = new MediaStream([generator]) (로컬 미리보기 업데이트)
-    User->>User: PeerConnection의 비디오 트랙 교체 (replaceTrack(generator))
-    Note over User,Helper: 변경된 스트림이 Helper에게 전송됨 (기존 track 이벤트 핸들러 재사용)
-    Helper->>Helper: PeerConnection 'track' 이벤트 (또는 기존 스트림 업데이트)
-    Helper->>Helper: Helper 화면에 잘린 User 화면 표시
+    User->>User: "도움받기" 버튼 클릭 후 제어 페이지로 이동
+    User->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
+    Signaling Server->>Signaling Server: User를 해당 room에 넣음
+    User->>User: init() -> getScreen() -> makeConnection()
+
+    User->>Signaling Server: 'start' 이벤트 전송
+    Signaling Server->>Helper: 'start' 이벤트 전달
+    
+    Helper->>Signaling Server: 'start' 이벤트 전송
+    Signaling Server->>User: 'start' 이벤트 전달
+
+    User->>Signaling Server: 'offer' 이벤트 전송
+    Signaling Server->>Helper: 'offer' 이벤트 전달
+
+    Helper->>Signaling Server: 'answer' 이벤트 전송
+    Signaling Server->>User: 'answer' 이벤트 전달
+    
+    Helper<->User: '화면 공유' 및 '화상 통신' 시작

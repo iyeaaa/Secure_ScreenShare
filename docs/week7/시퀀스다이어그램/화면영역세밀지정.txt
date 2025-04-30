@@ -17,6 +17,5 @@ title 화면 영역 세밀 지정
     User->>User: Generator 트랙에서 변환된 스트림 생성
 
     User->>User: PeerConnection의 비디오 트랙 교체
-
-    Helper->>Helper: PeerConnection의 기존 스트림 업데이트
-    Helper->>Helper: Helper 화면에 잘린 User 화면 표시
+    
+    User<->Helper: Cropping이 적용된 미디어 전송
