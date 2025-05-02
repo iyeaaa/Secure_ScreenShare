@@ -5,13 +5,15 @@
     participant Signaling Server
     participant User
 
-    Helper->>Helper: "도움주기" 버튼 클릭 후 제어 페이지로 이동
+    Helper->>Signaling Server: 제어 페이지 요청
+    Signaling Server-->Helper: 제어 페이지 전송
     Helper->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
     Signaling Server->>Signaling Server: Helper를 해당 room에 넣음
     Helper->>Helper: getMedia() 호출 (카메라/마이크 접근)
     Helper->>Helper: makeConnection() 호출 (RTCPeerConnection 생성)
 
-    User->>User: "도움받기" 버튼 클릭 후 제어 페이지로 이동
+    User->>Signaling Server: 제어 페이지 요청
+    Signaling Server-->User: 제어 페이지 전송
     User->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
     Signaling Server->>Signaling Server: User를 해당 room에 넣음
     User->>User: init() -> getScreen() -> makeConnection()
