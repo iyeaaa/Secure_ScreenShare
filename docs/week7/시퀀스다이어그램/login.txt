@@ -1,0 +1,17 @@
+title Login
+
+participant User & Helper
+
+participant Signaling Server
+
+User & Helper->Signaling Server: POST /login (email, password)
+Signaling Server-->User & Helper: 로그인 정보 확인
+alt 로그인 성공
+  Signaling Server->Signaling Server: 세션 생성
+  Signaling Server-->User & Helper: 응답: Success, sid
+  User & Helper->User & Helper: 메인 페이지 이동
+else 로그인 실패
+  Signaling Server-->User & Helper: 응답: Fail
+end
+
+

@@ -1,0 +1,33 @@
+
+    title WebRTC 연결
+
+    participant Helper
+    participant Signaling Server
+    participant User
+
+    Helper->>Signaling Server: 제어 페이지 요청
+    Signaling Server-->Helper: 제어 페이지 전송
+    Helper->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
+    Signaling Server->>Signaling Server: Helper를 해당 room에 넣음
+    Helper->>Helper: getMedia() 호출 (카메라/마이크 접근)
+    Helper->>Helper: makeConnection() 호출 (RTCPeerConnection 생성)
+
+    User->>Signaling Server: 제어 페이지 요청
+    Signaling Server-->User: 제어 페이지 전송
+    User->>Signaling Server: Socket 연결 후 Room 입장 이벤트 전송
+    Signaling Server->>Signaling Server: User를 해당 room에 넣음
+    User->>User: init() -> getScreen() -> makeConnection()
+
+    User->>Signaling Server: 'start' 이벤트 전송
+    Signaling Server->>Helper: 'start' 이벤트 전달
+    
+    Helper->>Signaling Server: 'start' 이벤트 전송
+    Signaling Server->>User: 'start' 이벤트 전달
+
+    User->>Signaling Server: 'offer' 이벤트 전송
+    Signaling Server->>Helper: 'offer' 이벤트 전달
+
+    Helper->>Signaling Server: 'answer' 이벤트 전송
+    Signaling Server->>User: 'answer' 이벤트 전달
+    
+    Helper<->User: '화면 공유' 및 '화상 통신' 시작

@@ -1,0 +1,14 @@
+title 메인 페이지
+    participant User & Helper
+    participant "Signaling Server" as s
+
+    User & Helper->s: 메인 페이지 요청
+    s->>s: 사용자 세션 확인
+    alt 세션 없음
+        s-->>User & Helper: 로그인 페이지 리다이렉션
+    else 세션 있음
+        s-->>User & Helper: 메인 페이지 전송
+        User & Helper->>s: GET /user 요청 (사용자 목록)
+        s-->>User & Helper: 사용자 목록 
+
+    end

@@ -1,0 +1,8 @@
+title 프라이버시 보호 실시간 지원 서비스
+
+participant User
+participant WebWorker
+participant Signaling Server
+participant Helper
+
+User->User: getMediaScreen()

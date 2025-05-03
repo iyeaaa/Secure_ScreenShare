@@ -1,0 +1,21 @@
+title 화면 영역 세밀 지정
+
+    participant User
+    participant WebWorker
+    participant Helper
+
+
+    User->>User: 영역 선택 버튼 클릭 후 슬라이더 조작
+    User->>User: applySliderValues() -> croppingScreen(위, 아래, 왼쪽, 오른쪽) 호출
+    User->>User: MediaStreamTrackProcessor/Generator 생성
+    User->>WebWorker: 'crop' 메시지 전송 (readable, writable 스트림 및 crop 값 전달)
+
+    WebWorker->>WebWorker: readable 스트림에서 프레임 읽기
+    WebWorker->>WebWorker: transform() 함수 실행 (crop 값 적용하여 프레임 자르기)
+    WebWorker->>WebWorker: 잘린 프레임을 writable 스트림에 쓰기
+    
+    User->>User: Generator 트랙에서 변환된 스트림 생성
+
+    User->>User: PeerConnection의 비디오 트랙 교체
+    
+    User<->Helper: Cropping이 적용된 미디어 전송
