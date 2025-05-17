@@ -17,6 +17,6 @@
 | 4 주차 | 문제정의서 작성 | [보고서](https://docs.google.com/document/d/14Z3h5PkqaI4eDuY_tky5x93FtNltqDEp/edit?usp=sharing&ouid=116586439470799169786&rtpof=true&sd=true) | [발표자료](https://drive.google.com/file/d/14Udo597ZiC3P2LbN8PdXhLQTjNRFX-zJ/view?usp=sharing) | [발표영상](https://youtu.be/trcVuJcsKjQ) | [PR](https://github.com/iyeaaa/PrivRTC/pull/5) |
 | 5 ~ 6 주차 | 유스케이스 명세서 작성 | [보고서](https://drive.google.com/file/d/1m5nW38I_OwqjBsZ1IMW_TGx7shzQ9rqv/view?usp=sharing) | [발표자료](https://drive.google.com/file/d/1lkffA419TqV7ijY0K5gdlcU2Xrhv3IAT/view?usp=sharing) | [발표영상](https://youtu.be/O9QoudGL4VE) | [PR](https://github.com/iyeaaa/PrivRTC/pull/7) |
 | 7 ~ 8 주차 | 시퀀스 다이어그램 작성 | [보고서](https://drive.google.com/file/d/1ox4fszU0RliugP12ZYEe4a0OLRPJSRko/view?usp=sharing) | [발표자료](https://drive.google.com/file/d/1ox6m0jLALT0ibqaVIwET4WEnrD1hCBR_/view?usp=sharing) | [발표영상](https://youtu.be/8jrYlrZgomo) | [PR](https://github.com/iyeaaa/PrivRTC/pull/8) |
-| 9 ~ 10 주차 | 테스트 계획서 작성 | 보고서 | 발표자료 | 발표영상 | PR |
+| 11 주차 | 테스트 계획서 작성 | [보고서](https://docs.google.com/document/d/1-HMGQbRBsfu-sEgXQ0esNTIn6HLKIL5n/edit?usp=sharing&ouid=116586439470799169786&rtpof=true&sd=true) | [발표자료](https://docs.google.com/presentation/d/1-F4PUEQZ8uR4-oVKz8CgPxnBsSMBrIkj/edit?usp=sharing&ouid=116586439470799169786&rtpof=true&sd=true) | [발표영상](https://youtu.be/r8z5Vyb6kII) | [PR](https://github.com/iyeaaa/PrivRTC/pull/10) |
 | 11 ~ 12 주차 | 테스트케이스 설계서 작성 | 보고서 | 발표자료 | 발표영상 | PR |
 | 13 ~ 14 주차 | 테스트 결과 보고서 작성 | 보고서 | 발표자료 | 발표영상 | PR |
