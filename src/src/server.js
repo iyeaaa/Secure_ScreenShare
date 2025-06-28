@@ -23,23 +23,23 @@ app.use(express.urlencoded({ extended: true }));
 /* Database 예시 */
 const users = {
     "iyeaaa@naver.com": [
-        { email: "cyh1443@gmail.com", room: "a" },
-        { email: "sjj2305@naver.com", room: "b" }
+        { email: "amcut@naver.com", room: "a" },
+        { email: "downpool.choi@gmail.com", room: "b" }
     ],
-    "cyh1443@gmail.com": [
+    "amcut@naver.com": [
         { email: "iyeaaa@naver.com", room: "a" },
-        { email: "sjj2305@naver.com", room: "c" }
+        { email: "downpool.choi@gmail.com", room: "c" }
     ],
-    "sjj2305@naver.com": [
-        { email: "cyh1443@gmail.com", room: "c" },
+    "downpool.choi@gmail.com": [
+        { email: "amcut@naver.com", room: "c" },
         { email: "iyeaaa@naver.com", room: "b" }
     ],
 };
 
 const login_info = {
     "iyeaaa@naver.com": "123456",
-    "cyh1443@gmail.com": "123456",
-    "sjj2305@naver.com": "123456"
+    "amcut@naver.com": "123456",
+    "downpool.choi@gmail.com": "123456"
 };
 
 function ifNotLogin(req, res) {
