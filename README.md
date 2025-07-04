@@ -60,8 +60,12 @@
 ## 🏆 수상 경력
 
 - **2025 CNU SW/AI Project Fair 창의작품경진대회 우수상 (2위/85팀)**.  
-![Project Demo GIF](https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%EC%83%81%EC%9E%A5.jpeg)
-![d](https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%ED%8C%90%EB%84%AC.jpeg)
+
+| 상장 | 판넬 |
+| :--- | :--- |
+| <img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%EC%83%81%EC%9E%A5.jpeg" width="300"> | <img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%ED%8C%90%EB%84%AC.jpeg" width="300"> |
+
+
 
 
 
