@@ -16,7 +16,7 @@
   * **실시간 객체 탐지**: 학습된 **YOLO 모델**을 활용하여, 화면 공유 중 갑자기 나타나는 카카오톡, 줌(Zoom) 알림 등 사전에 정의된 민감 객체를 실시간으로 탐지합니다.
   * **자동 마스킹**: 탐지된 객체는 즉시 검은색 사각형으로 가려져, 상대방에게는 해당 정보가 전혀 노출되지 않습니다.
 
-<img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%EB%A7%88%EC%8A%A4%ED%82%B9%20%EA%B8%B0%EB%8A%A5.png" width="500">
+<img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%EB%A7%88%EC%8A%A4%ED%82%B9%20%EA%B8%B0%EB%8A%A5.png" width="600">
 
 
 ### 2\. 화면 영역 세밀 지정
@@ -26,7 +26,7 @@
   * **정교한 스트림 제어**: 브라우저의 **Insertable Streams API**를 활용하여 WebRTC로 전송되는 원본 비디오 프레임을 직접 제어합니다.
   * **직관적인 UX**: 사용자가 선택한 영역의 좌표값(x, y, width, height)을 기준으로 매 프레임을 잘라내어(crop) 상대방에게 전송함으로써, 원하는 부분만 정확하게 공유하고 나머지 영역의 프라이버시는 완벽하게 보호합니다.
 
-<img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%ED%99%94%EB%A9%B4%EC%98%81%EC%97%AD%EC%84%B8%EB%B0%80%EC%A7%80%EC%A0%95.png" width="500">
+<img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%ED%99%94%EB%A9%B4%EC%98%81%EC%97%AD%EC%84%B8%EB%B0%80%EC%A7%80%EC%A0%95.png" width="600">
 
 
 ## 🛠️ 시스템 아키텍처 및 기술 스택
@@ -66,7 +66,7 @@
 
 
 
-## 발전과정
+## 작업과정
 
 | 주차  | 활동 | 보고서 | 발표자료 | 발표영상 | PR |
 |------|------|--------|----------|----------|----|
