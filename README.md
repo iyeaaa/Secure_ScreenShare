@@ -1,14 +1,10 @@
 
 # AI 기반 프라이버시 보호 실시간 화면 공유 서비스
 
-[](https://opensource.org/licenses/MIT)
-[](https://github.com/)
 
-**PrivRTC**는 WebRTC 기반의 실시간 화면 공유 서비스에 AI 기술을 접목하여, 사용자의 민감 정보 유출을 원천적으로 방지하는 지능형 프라이버시 보호 솔루션입니다. 기존 화면 공유 방식의 한계를 극복하고, 사용자가 안심하고 소통할 수 있는 새로운 협업 환경을 제공합니다.
+## ✨ 포스터
 
-## ✨ 프로젝트 데모
-
-*(이곳에 프로젝트의 핵심 기능이 담긴 1분 내외의 시연 영상이나 GIF 파일을 넣어주세요. '화면 영역 지정'과 '자동 마스킹'이 작동하는 모습을 보여주는 것이 가장 효과적입니다.)*
+<img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%5B%ED%8F%AC%EC%8A%A4%ED%84%B0%5DCTR_%EC%9D%B4%EC%98%88%EC%9D%B8.jpg" width="650">
 
 
 ## 🎯 핵심 기능 (Core Features)
