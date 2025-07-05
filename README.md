@@ -37,21 +37,6 @@
   * **Backend**: `Node.js`, `Express`, `Socket.IO`
   * **Real-time Communication**: `WebRTC` (영상/음성/데이터 채널)
   * **AI Module**: `Python`, `YOLO`, `OpenCV`
-  * **System Integration**: Node.js의 `child_process`를 통한 Python 모듈 API화
-
-<!-- end list -->
-
-```
-[ 사용자 A (공유자) ]                  [      Node.js 서버      ]                  [ 사용자 B (시청자) ]
-  - WebRTC 화면 캡처  <---------------->  - 시그널링 (Socket.IO)  <---------------->  - WebRTC 스트림 수신
-  - 캡처 프레임 전송     
-        |
-        V
-  [ Python AI 모듈 ]
-  - YOLO 객체 탐지
-  - 마스킹 좌표 반환
-```
-
 
 ## 🏆 수상 경력
 
