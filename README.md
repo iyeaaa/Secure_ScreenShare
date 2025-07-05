@@ -29,7 +29,7 @@
 <img src="https://github.com/iyeaaa/Secure_ScreenShare/blob/main/photos/%ED%99%94%EB%A9%B4%EC%98%81%EC%97%AD%EC%84%B8%EB%B0%80%EC%A7%80%EC%A0%95.png" width="600">
 
 
-## 🛠️ 시스템 아키텍처 및 기술 스택
+## 🛠️ 기술 스택
 
 이 프로젝트는 최신 웹 기술과 AI 모델을 결합한 풀스택 애플리케이션입니다.
 
